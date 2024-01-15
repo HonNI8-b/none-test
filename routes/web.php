@@ -1,18 +1,9 @@
 <?php
 
+use App\Http\Controllers\VendingMachineController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('registration.index');
-});
+Route::get('/', [VendingMachineController::class, 'index'])->name('index');
+Route::get('/registration/addition', [VendingMachineController::class, 'showAdditionForm'])->name('registration.addition');
+Route::post('/registration/addition', [VendingMachineController::class, 'showAdditionForm'])->name('registration.addition.form');
+Route::post('/post',[VendingMachineController::class, 'store'])->name('store');

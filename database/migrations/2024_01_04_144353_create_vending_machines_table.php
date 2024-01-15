@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('vending_machines', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->integer('picture');
-            $table->integer('category_id');
+            $table->string('date');
             $table->integer('price');
             $table->integer('stock');
-            $table->integer('maker');
-            $table->integer('comment');
+            $table->integer('category_id');
+            $table->string('comment');
             $table->timestamps();
         });
     }
@@ -31,4 +29,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('vending_machines');
     }
+
 };
+
+    

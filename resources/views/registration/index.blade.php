@@ -13,6 +13,7 @@
 
     <section class="container">
         <div class="balance">
+            
             <table>
                 <thead>
                     <tr>
@@ -22,11 +23,16 @@
                         <th>価格</th>
                         <th>在庫数</th>
                         <th>メーカー名</th>
+                        <th>
+                            <form action="{{ route('registration.addition') }}" method="POST">
+                                @csrf
+                                <button type="submit">新規登録</button>
+                            </form>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 支出データのループ処理 -->
-
+                    <!-- 支出データのループ処理-->
                 </tbody>
             </table>
         </div>
