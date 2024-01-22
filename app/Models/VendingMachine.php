@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use App\Models\Category;
 
 class VendingMachine extends Model
 {
@@ -19,5 +21,9 @@ class VendingMachine extends Model
         'stock',
         'category_id'
     ];
+
+    public function category() : Relation {
+        return $this->belongsTo(Category::class);
+    }
 
 }

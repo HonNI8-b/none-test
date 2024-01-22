@@ -8,26 +8,18 @@ use App\Models\VendingMachine;
 
 class VendingMachineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $categories = Category::all();
-        return view('registration.index', compact('categories'));
+        $vendingmachines = VendingMachine::with('category')->get();
+        return view('registration.index', compact('categories','vendingmachines'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,7 +28,9 @@ class VendingMachineController extends Controller
             'stock' => 'required|numeric',
         ]);
 
-        $result = VendingMachine::create([
+        // 画像のアップロード処理（適切に実装が必要）
+
+        VendingMachine::create([
             'image' => $request->image,
             'comment' => $request->comment,
             'category_id' => $request->category_id,
@@ -45,7 +39,7 @@ class VendingMachineController extends Controller
             'stock' => $request->stock,
         ]);
 
-        return redirect('/posts');
+        return redirect('/');
     }
 
     /**
@@ -56,20 +50,42 @@ class VendingMachineController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    //edit.blade.phpへの受け渡し
     public function edit(string $id)
     {
+        $vendingmachine = VendingMachine::findOrFail($id);
+        $categories = Category::all();
+        return view('registration.edit', compact('vendingmachine','categories'));
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    //detail.blade.phpへの受け渡し
+    public function showEditForm(string $id)
     {
-        //
+        $vendingmachine = VendingMachine::findOrFail($id);
+        return view('registration.detail', compact('vendingmachine'));
+    }
+    
+    //edit.blade.php登録ボタンの処理
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'price' => 'required|numeric',
+            'date' => 'required',
+            'stock' => 'required|numeric',
+        ]);
+
+        // 画像のアップロード処理（適切に実装が必要）
+        $vendingmachine = VendingMachine::findOrFail($id);
+        $vendingmachine->update([
+            'date' => $request->input('date'),
+            'category_id' => $request->input('category_id'),
+            'price' => $request->input('price'),
+            'stock' => $request->input('stock'),
+            'comment' => $request->input('comment'),
+            'image' => $request->input('image'),
+        ]);
+        return redirect('/');
     }
 
     /**
