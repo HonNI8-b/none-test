@@ -44,3 +44,27 @@ header {
 .balance tbody tr:nth-child(odd) {
 background: #f2f2f2;
 }
+
+.pagination {
+    list-style: none;
+    display: flex;
+}
+
+.pagination li {
+    cursor: pointer;
+    text-align: center;
+    padding: 8px 0px;
+}
+
+.pagination li a {
+    padding: 15px;
+    text-decoration: none;
+    background-color: mediumaquamarine;
+    opacity: 0.8;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.pagination li span {
+    padding: 15px;
+}

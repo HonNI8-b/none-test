@@ -10,5 +10,6 @@ Route::put('/registration/addition', [VendingMachineController::class, 'update']
 
 Route::get('/registration/detail/{id}', [VendingMachineController::class, 'showEditForm'])->name('registration.detail');  
 Route::get('/registration/edit/{id}', [VendingMachineController::class, 'edit'])->name('registration.edit');
-
 Route::put('/update/{id}', [VendingMachineController::class, 'update'])->name('registration.update');
+
+Route::post('/destroy/{id}',[VendingMachineController::class, 'destroy'])->name('registration.destroy');

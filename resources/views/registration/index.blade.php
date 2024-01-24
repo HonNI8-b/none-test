@@ -45,7 +45,8 @@
                             <form action="{{ route('registration.detail', ['id'=>$vendingmachine->id])}}" method="GET">
                                 <input type="submit" value="詳細" class="detail-button">
                             </form>
-                            <form action="" method="">
+                            <form action="{{ route('registration.destroy',['id'=>$vendingmachine->id])}}" method="POST">
+                                @csrf
                                 <input type="submit" value="削除" class="delete-button">
                             </form>
                         </td>
@@ -53,6 +54,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="pagination">
+                {{$vendingmachines->links()}}
+            </div>
         </div>
     </section>
 </body>

@@ -11,7 +11,7 @@ class VendingMachineController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $vendingmachines = VendingMachine::with('category')->get();
+        $vendingmachines = VendingMachine::with('category')->paginate(5);
         return view('registration.index', compact('categories','vendingmachines'));
     }
 
@@ -88,12 +88,12 @@ class VendingMachineController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //削除ボタンの処理
     public function destroy(string $id)
     {
-        //
+        $vendingmachine = VendingMachine::find($id);
+        $vendingmachine->delete();
+        return redirect('/');
     }
 
     //additionページへの偏移
