@@ -102,4 +102,5 @@ class VendingMachineController extends Controller
         $categories = Category::all();
         return view('registration.addition', compact('categories'));
     }
+
 }

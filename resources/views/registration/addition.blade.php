@@ -4,6 +4,8 @@
     <title>新規登録</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+@extends('layouts.app')
+@section('content')
 <body>
     <header>
         <h1>新規登録</h1>
@@ -42,4 +44,5 @@
         </div>
     </div>
 </body>
+@endsection
 </html>

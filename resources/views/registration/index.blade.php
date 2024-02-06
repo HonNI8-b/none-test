@@ -6,10 +6,25 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
+@extends('layouts.app')
+@section('content')
 <body>
+
     <header>
         <h1>商品一覧画面</h1>
     </header>
+
+    <form action="{{ route('search.index') }}" method="GET">
+        <input type="text" name="keyword" placeholder="検索キーワード" value="{{ isset($keyword) ? $keyword : '' }}">
+        <label for="category_id">カテゴリー:</label>
+        <select name="category_id" id="category_id">
+            <option value="">すべて</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}" @if(isset($category_id) && $category_id == $category->id) selected @endif>{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <button type="submit">検索</button>
+    </form>
 
     <section class="container">
         <div class="balance">            
@@ -60,4 +75,5 @@
         </div>
     </section>
 </body>
+@endsection
 </html>

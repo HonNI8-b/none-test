@@ -1,60 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>商品一覧</title>
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
-</head>
 @extends('layouts.app')
 @section('content')
-<body>
-    <header>
-        <h1>商品詳細画面</h1>
-    </header>
 
-    <section class="container">
-        <div class="balance">            
+<h2>検索結果</h2>
+
+@if(count($results) > 0)
+    <div class="balance">            
             <table>
                 <tbody>
+                    @foreach($results as $result)
                         <tr>
                             <td>ID</td>
-                            <td>{{ $vendingmachine->id }}</td>
+                            <td>{{ $result->id }}</td>
                         </tr>
                         <tr>
                             <td>商品画像</td>
-                            <td><img src="{{ $vendingmachine->image }}" alt="商品画像"></td>
+                            <td><img src="{{ $result->image }}" alt="商品画像"></td>
                         </tr>
                         <tr>
                             <td>商品名</td>
-                            <td>{{ $vendingmachine->date }}</td>
+                            <td>{{ $result->date }}</td>
                         </tr>
                         <tr>
                             <td>メーカー</td>
-                            <td>{{ $vendingmachine->category->name }}</td>
+                            <td>{{ $result->category->name }}</td>
                         </tr>
                         <tr>
                             <td>価格</td>
-                            <td>{{ $vendingmachine->price }}</td>
+                            <td>{{ $result->price }}</td>
                         </tr>
                         <tr>
                             <td>在庫数</td>
-                            <td>{{ $vendingmachine->stock }}</td>
+                            <td>{{ $result->stock }}</td>
                         </tr>
                         <tr>
                             <td>コメント</td>
-                            <td>{{ $vendingmachine->comment }}</td>
+                            <td>{{ $result->comment }}</td>
                         </tr>
+                    @endforeach
                 </tbody>
             </table>
+            </div>
+            @else
+                <p>検索結果が見つかりませんでした。</p>
+            @endif
             <div class="button-container">
-            <form action="{{ route('registration.edit', ['id' => $vendingmachine->id]) }}" method="GET">
-                <input type="submit" value="編集" class="detail-button">
-            </form>
                     <input type="button" class="back-button" value="戻る" onclick="window.location.href='{{ url('/') }}'">
             </div>
-        </div>
-    </section>
-</body>
+
 @endsection
-</html>

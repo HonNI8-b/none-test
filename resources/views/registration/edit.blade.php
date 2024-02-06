@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 </head>
+@extends('layouts.app')
+@section('content')
 <body>
     <header>
         <h1>商品情報編集画面</h1>
@@ -43,4 +45,5 @@
         </div>
     </div>
 </body>
+@endsection
 </html>
