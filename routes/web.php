@@ -4,7 +4,7 @@ use App\Http\Controllers\VendingMachineController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [VendingMachineController::class, 'index'])->name('index');
+//Route::get('/', [VendingMachineController::class, 'index'])->name('index');
 Route::get('/registration/addition', [VendingMachineController::class, 'showAdditionForm'])->name('registration.addition');
 Route::post('/registration/addition', [VendingMachineController::class, 'store'])->name('registration.addition.form');  
 Route::put('/registration/addition', [VendingMachineController::class, 'update'])->name('registration.addition.update');  
@@ -25,6 +25,7 @@ Auth::routes();
 
 // 未ログイン時のページ偏移
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', [VendingMachineController::class, 'index'])->name('index');
     Route::get('/registration', [VendingMachineController::class, 'index'])->name('registration.index'); // 名前を修正
     Route::get('/registration/addition', [VendingMachineController::class, 'showAdditionForm'])->name('registration.addition'); // 名前を修正
     //Route::get('/registration/edit', [VendingMachineController::class, 'index'])->name('registration.index'); // 名前を修正

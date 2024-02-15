@@ -14,7 +14,7 @@
         <h1>商品一覧画面</h1>
     </header>
 
-    <form action="{{ route('search.index') }}" method="GET">
+    <form action="{{ route('search.index') }}" class="search-box" method="GET">
         <input type="text" name="keyword" placeholder="検索キーワード" value="{{ isset($keyword) ? $keyword : '' }}">
         <label for="category_id">カテゴリー:</label>
         <select name="category_id" id="category_id">
@@ -23,7 +23,7 @@
                 <option value="{{ $category->id }}" @if(isset($category_id) && $category_id == $category->id) selected @endif>{{ $category->name }}</option>
             @endforeach
         </select>
-        <button type="submit">検索</button>
+        <button type="submit" class="s-button">検索</button>
     </form>
 
     <section class="container">
@@ -40,7 +40,7 @@
                         <th>
                             <form action="{{ route('registration.addition.form') }}" method="GET">
                                 @csrf
-                                <button type="submit">新規登録</button>
+                                <button type="submit" class="add-button">新規登録</button>
                             </form>
                         </th>
                     </tr>
@@ -50,7 +50,7 @@
                     @foreach($vendingmachines as $vendingmachine)
                     <tr>
                         <td>{{ $vendingmachine->id }}</td>
-                        <td><img src="{{ $vendingmachine->image }}" alt="商品画像"></td>
+                        <td><img src="{{ asset($vendingmachine->image) }}" alt="商品画像"></td>
                         <td>{{ $vendingmachine->date }}</td>
                         <td>{{ $vendingmachine->price }}</td>
                         <td>{{ $vendingmachine->stock }}</td>

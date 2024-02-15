@@ -35,7 +35,7 @@
                 <label for="comment">コメント:</label>
                 <input type="text" id="comment" name="comment" value="{{ old('comment') }}">
                 <label for="image">商品画像:</label>
-                <input type="file" id="image" name="image" accept="">
+                <input type="file" id="image" name="image" accept="image/">
                 <div class="button-container">
                     <button type="submit" class="edit-button">登録</button>
                     <input type="button" class="back-button" value="戻る" onclick="window.location.href='{{ url('/') }}'">

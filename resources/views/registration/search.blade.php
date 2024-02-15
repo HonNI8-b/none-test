@@ -1,7 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+</head>
 @extends('layouts.app')
 @section('content')
-
-<h2>検索結果</h2>
+<body>
+    <header>
+        <h1>検索結果</h1>
+    </header>
 
 @if(count($results) > 0)
     <div class="balance">            
@@ -46,5 +56,6 @@
             <div class="button-container">
                     <input type="button" class="back-button" value="戻る" onclick="window.location.href='{{ url('/') }}'">
             </div>
-
+</body>
 @endsection
+</html>

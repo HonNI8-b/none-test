@@ -19,6 +19,8 @@ header {
     margin-bottom: 20px;
     width: 100%;
     max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .balance h3 {
@@ -34,20 +36,32 @@ header {
 .balance td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ccc;
-}
-
-.balance td {
-    border-top: 1px solid #ccc;
 }
 
 .balance tbody tr:nth-child(odd) {
 background: #f2f2f2;
 }
 
+.error {
+    color: tomato;
+}
+
+.flash_message {
+    background-color: aquamarine;
+    opacity: 0.4;
+    color: darkgreen;
+}
+
+.flash_error_message {
+    background-color: tomato;
+    opacity: 0.6;
+    color: rgb(59, 0, 0);
+}
+
 .pagination {
     list-style: none;
     display: flex;
+    padding-top: 10px;
 }
 
 .pagination li {
@@ -65,6 +79,153 @@ background: #f2f2f2;
     color: #fff;
 }
 
+.search-box{
+    text-align: center;
+    margin-left: auto;
+    max-width: 1320px;
+    background-color: #fff;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.search-box input,
+.search-box select{
+    padding: 5px;
+    margin-right: 15px;
+}
+
+.s-button{
+    padding: 4px 40px;
+    margin-right: 20px;
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
 .pagination li span {
     padding: 15px;
+}
+
+.add-button{
+    padding: 8px 30px;
+    margin-right: 20px;
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
+.button-td {
+    display: flex;
+    align-items: baseline;
+}
+
+.button-td input,
+.back-button,
+.detail-button,
+.delete-button {
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-button,
+.detail-button {
+    margin-right: 20px;
+    background-color: orange;
+    text-decoration: none;
+}
+
+.back-button,
+.delete-button {
+    background-color: tomato!important;
+}
+
+.form-balance {
+    width: 100%;
+    max-width: 20%;
+    margin-left: 50px;
+}
+
+.form-balance h3 {
+    margin-top: 0;
+}
+
+.form-balance form {
+    display: flex;
+    flex-direction: column;
+    width: 120%;
+}
+
+.form-balance .form-group {
+    margin-bottom: 10px;
+}
+
+.form-balance label {
+    font-weight: bold;
+}
+.form-balance input:not(.back-button),
+.form-balance select {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.form-balance button, 
+.button-td input,
+.edit-button-a {
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+.form-balance button {
+    background-color: mediumaquamarine;
+}
+
+.edit-button-a {
+    background-color: orange;
+    text-decoration: none;
+}
+
+.error {
+    color: tomato;
+}
+
+.edit-page {
+    width: 100%;
+    background-color: #fff;
+}
+
+.edit-balance {
+    padding: 20px;
+    background-color: #fff;
+    margin: 0 auto;
+    max-width: 20%;
+}
+
+.button-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.button-container .edit-button,
+.back-button {
+    cursor: pointer;
+    
+}
+
+.card h2 {
+    text-align: center;
+    margin-top: 5%;
 }

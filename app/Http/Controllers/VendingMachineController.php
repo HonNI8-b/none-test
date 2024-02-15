@@ -26,12 +26,26 @@ class VendingMachineController extends Controller
             'price' => 'required|numeric',
             'date' => 'required',
             'stock' => 'required|numeric',
+            'image' => 'required|image', 
         ]);
 
-        // 画像のアップロード処理（適切に実装が必要）
+        // 画像ファイルの取得
+        $image = $request->file('image');
+
+        // ファイル名を生成
+        $imageName = uniqid() . '_' . $image->getClientOriginalName();
+
+        // 画像を保存するディレクトリを指定
+        $directory = 'uploads';
+
+        // 画像を保存
+        $image->storeAs($directory, $imageName);
+
+        // 画像の保存パス
+        $imagePath = $directory . '/' . $imageName;
 
         VendingMachine::create([
-            'image' => $request->image,
+            'image' => $imagePath,
             'comment' => $request->comment,
             'category_id' => $request->category_id,
             'price' => $request->price,
