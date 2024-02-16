@@ -4,6 +4,8 @@ use App\Http\Controllers\VendingMachineController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+
 //Route::get('/', [VendingMachineController::class, 'index'])->name('index');
 Route::get('/registration/addition', [VendingMachineController::class, 'showAdditionForm'])->name('registration.addition');
 Route::post('/registration/addition', [VendingMachineController::class, 'store'])->name('registration.addition.form');  
