@@ -8,11 +8,22 @@ use App\Models\VendingMachine;
 
 class VendingMachineController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
-        $vendingmachines = VendingMachine::with('category')->paginate(5);
-        return view('registration.index', compact('categories','vendingmachines'));
+        $query = VendingMachine::with('category');
+
+        // ソートのデフォルト値を設定する
+        $sortField = $request->input('sort', 'id');
+        $sortDirection = $request->input('direction', 'asc');
+
+        // ソートの適用
+        $query->orderBy($sortField, $sortDirection);
+
+        // クエリを実行して結果を取得
+        $vendingmachines = $query->paginate(5);
+
+        return view('registration.index', compact('categories', 'vendingmachines'));
     }
 
     public function create()

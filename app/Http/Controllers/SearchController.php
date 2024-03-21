@@ -13,6 +13,8 @@ class SearchController extends Controller
         $keyword = $request->input('keyword');
         $category_id = $request->input('category_id');
         $sort = $request->input('sort');
+        $min_price = $request->input('min_price');
+        $max_price = $request->input('max_price');
 
         $query = VendingMachine::query();
 
@@ -26,6 +28,16 @@ class SearchController extends Controller
             $query->where('category_id', $category_id);
         }
 
+        // 最小価格が指定されている場合、その価格以上の商品をクエリに追加
+        if($min_price){
+            $query->where('price', '>=', $min_price);
+        }
+
+        // 最大価格が指定されている場合、その価格以下の商品をクエリに追加
+        if($max_price){
+            $query->where('price', '<=', $max_price);
+        }
+
         // カテゴリーによるソート
         if ($sort === 'category') {
             $query->orderBy('category_id');
@@ -36,7 +48,16 @@ class SearchController extends Controller
 
         $results = $query->get();
 
-        return view('registration.search', compact('results', 'keyword', 'category_id','sort', 'categories'));
+        // Productモデルに基づいてクエリビルダを初期化
+        $query = VendingMachine::query();
+ 
+        return view('registration.index', compact('results', 'keyword', 'category_id','sort', 'categories','min_price','max_price'));
+    }
+
+    public function getUsersBySearchName($userName)
+    {
+        $users = $this->user->where('name', 'like', '%' . $userName . '%')->withCount('items')->orderBy('items_count', 'desc')->get(); //出品数もほしいため、withCountでitemテーブルのレコード数も取得
+        return response()->json($users);
     }
 }
 

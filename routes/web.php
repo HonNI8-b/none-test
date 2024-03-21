@@ -33,3 +33,6 @@ Route::middleware(['auth'])->group(function () {
     //Route::get('/registration/edit', [VendingMachineController::class, 'index'])->name('registration.index'); // 名前を修正
     Route::get('/registration/detail', [VendingMachineController::class, 'index'])->name('registration.index'); // 名前を修正
 });
+
+Route::get('/user/index/{name}', 'SearchController@getUsersBySearchName'); // url: '/user/index/' + userNameと同じ
+
