@@ -19,7 +19,8 @@ Route::put('/update/{id}', [VendingMachineController::class, 'update'])->name('r
 Route::post('/destroy/{id}',[VendingMachineController::class, 'destroy'])->name('registration.destroy');
 
 // 検索
-Route::get('/search', [SearchController::class, 'index'])->name('search.index');
+Route::get('/search', [SearchController::class, 'index'])->name('registration.index');
+Route::get('/registration/search', [SearchController::class, 'index'])->name('registration.search');
 
 Auth::routes();
 
@@ -34,5 +35,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/registration/detail', [VendingMachineController::class, 'index'])->name('registration.index'); // 名前を修正
 });
 
-Route::get('/user/index/{name}', 'SearchController@getUsersBySearchName'); // url: '/user/index/' + userNameと同じ
 
